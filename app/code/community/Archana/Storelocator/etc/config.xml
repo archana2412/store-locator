@@ -1,0 +1,155 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Configuration file
+ */
+-->
+<config>
+    <modules>
+        <Archana_Storelocator>
+            <version>0.1.2</version>
+        </Archana_Storelocator>
+    </modules>
+    
+    <global>
+         <models>
+            <archana_storelocator>
+                <class>Archana_Storelocator_Model</class>
+                <resourceModel>storelocator_resource</resourceModel>
+            </archana_storelocator>
+            <storelocator_resource>
+                <class>Archana_Storelocator_Model_Resource</class>
+                <entities>
+                    <storelocator>
+                        <table>archana_storelocator</table>
+                    </storelocator>
+                    <storelocator_store>
+                        <table>archana_storelocator_store</table>
+                    </storelocator_store>
+                </entities>
+            </storelocator_resource>
+        </models>
+        
+        <helpers>
+            <archana_storelocator>
+                <class>Archana_Storelocator_Helper</class>
+            </archana_storelocator>  
+        </helpers>
+        
+        <blocks>
+            <archana_storelocator>
+                <class>Archana_Storelocator_Block</class>
+            </archana_storelocator>
+        </blocks>
+        
+        <resources>
+            <archana_storelocator_setup>
+                <setup>
+                    <module>Archana_Storelocator</module>
+                    <class>Archana_Storelocator_Model_Resource_Setup</class>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </archana_storelocator_setup>
+            
+            <archana_storelocator_write>
+                <connection>
+                    <use>core_write</use>
+                </connection>
+            </archana_storelocator_write>
+            
+            <archana_storelocator_read>
+                <connection>
+                    <use>core_read</use>
+                </connection>
+            </archana_storelocator_read>
+        </resources>
+        
+    </global>
+    
+    <frontend>
+        <routers>
+            <archana_storelocator>
+                <use>standard</use>
+                <args>
+                    <module>Archana_Storelocator</module>
+                    <frontName>storelocator</frontName>
+                </args>
+            </archana_storelocator>
+        </routers>
+        
+        <!-- set frontend layout file-->
+        <layout>
+            <updates>
+                <archana_storelocator>
+                    <file>archana_storelocator.xml</file>
+                </archana_storelocator>
+            </updates>
+        </layout>
+    </frontend>
+    
+    <admin>
+        <routers>
+            <adminhtml>
+                <args>
+                    <modules>
+                        <Archana_Storelocator after="Mage_Adminhtml">Archana_Storelocator_Adminhtml</Archana_Storelocator>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
+    
+    
+    <adminhtml>
+        <!-- ACL for sections -->
+        <acl>
+           <resources>
+            <all>
+                <title>Allow Everything</title>
+            </all>
+               <admin>
+                   <children>
+                       <system>
+                           <children>
+                               <config>
+                                   <children>
+                                       <archana_storelocator_general_setting translate="title" module="archana_storelocator">
+                                           <title>Store Locator General Settings</title>
+                                       </archana_storelocator_general_setting>
+                                   </children>
+                               </config>
+                           </children>
+                       </system>
+                   </children>
+               </admin>
+           </resources>
+        </acl>
+        
+        <!-- Admin layout configuration -->
+        <layout>
+            <updates>
+                <archana_storelocator>
+                    <file>archana_storelocator.xml</file>
+                </archana_storelocator>
+            </updates>
+        </layout>
+        
+    </adminhtml>
+    
+    <!-- Set default values for system varablses -->
+    <default>
+        <archana_storelocator_general_setting>
+            <archana_storelocator_status>
+                <enable>1</enable>
+            </archana_storelocator_status>
+            
+            <archana_storelocator_display_setting>
+                <default_radius>100</default_radius>
+                <zoom_level>6</zoom_level>
+                <stores_per_page>8</stores_per_page>
+            </archana_storelocator_display_setting>
+        </archana_storelocator_general_setting>
+    </default> 
+</config>

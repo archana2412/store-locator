@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Module configuration file
+ */
+-->
+<config>
+    <modules>
+        <Archana_Storelocator>
+            <active>true</active>
+            <codePool>community</codePool>
+        </Archana_Storelocator>
+    </modules>
+</config>

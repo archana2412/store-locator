@@ -1,0 +1,78 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Storelocator frontend layout file
+ *
+ */
+-->
+<layout version="0.1.0">
+    <default>
+        <reference name="top.links">
+            <action method="addLink" translate="label title" module="archana_storelocator" 
+              ifconfig="archana_storelocator_general_setting/archana_storelocator_status/enable">
+                <label>Store Locator</label>
+                <url>storelocator</url>
+                <title>Store Locator</title>
+                <prepare>true</prepare>
+                <position>10</position>
+            </action>
+        </reference>
+    </default>
+    <archana_storelocator_index_index translate="label">
+        <label>Store List Page</label>
+        <reference name="head">
+            <!-- css for store locator extension -->
+             <action method="addCss"><stylesheet>css/archana_storelocator.css</stylesheet></action>
+              <!-- Include google map js file-->
+             <block type="core/text" name="gmap_external_js">
+                 <action method="setText">
+                     <text><![CDATA[<script language="javascript" type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>]]></text>
+                 </action>
+             </block>
+             <!-- Add storelocator js file-->
+             <action method="addItem"><type>skin_js</type><name>js/archana_storelocator/storelocator.js</name></action>
+            <action method="setTitle" translate="title" module="archana_storelocator"><title>Find Store</title></action>
+        </reference>
+        <reference name="root">
+            <action method="setTemplate">
+                <template>page/1column.phtml</template>
+            </action>
+            <action method="setHeaderTitle" translate="title" module="archana_storelocator">
+                <title>Storelocator</title>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="archana_storelocator/list" name="stores.list" template="archana/storelocator/list.phtml">
+                <block type="page/html_pager" name="stores.list.pager" />
+            </block>
+        </reference>
+    </archana_storelocator_index_index>
+    
+     <archana_storelocator_index_view translate="label">
+        <label>Store View Page</label>
+        <reference name="head">
+            <!-- css for store locator extension -->
+             <action method="addCss"><stylesheet>css/archana_storelocator.css</stylesheet></action>
+             <!-- Include google map js file-->
+             <block type="core/text" name="gmap_external_js">
+                 <action method="setText">
+                     <text><![CDATA[<script language="javascript" type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>]]></text>
+                 </action>
+             </block>
+             <!-- Add storelocator js file-->
+             <action method="addItem"><type>skin_js</type><name>js/archana_storelocator/storelocator.js</name></action>
+            <action method="setTitle" translate="title" module="archana_storelocator"><title>View Store</title></action>
+        </reference>
+        <reference name="root">
+            <action method="setTemplate">
+                <template>page/1column.phtml</template>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="archana_storelocator/view" name="store.view" template="archana/storelocator/view.phtml" />
+        </reference>
+    </archana_storelocator_index_view>
+    <archana_storelocator_index_search translate="label">
+      <update handle="archana_storelocator_index_index"/>  
+    </archana_storelocator_index_search>
+</layout>
